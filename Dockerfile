@@ -14,10 +14,10 @@ FROM eclipse-temurin:17-jdk
 WORKDIR /app
 
 # Copy jar dari stage build
-COPY --from=build /app/target/*.jar app.jar
+COPY --from=build /app/target/github-workflow.jar app.jar
 
 # Jalankan jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","/app/app.jar"]
 
 # Expose port (ubah sesuai application.properties)
 EXPOSE 8080
