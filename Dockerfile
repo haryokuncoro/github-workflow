@@ -1,23 +1,14 @@
-# Stage build
-FROM maven:3.9.3-eclipse-temurin-17 AS build
+# Gunakan OpenJDK 17
+FROM openjdk:17-jdk-slim
+
+# Set working directory
 WORKDIR /app
 
-# Copy pom dan src
-COPY pom.xml .
-COPY src ./src
+# Copy jar hasil build Maven
+COPY target/github-workflow.jar app.jar
 
-# Build jar fat/self-contained, skip tests (optional)
-RUN mvn clean package -DskipTests
+# Set default port dari environment variable
+ENV PORT 8080
 
-# Stage runtime
-FROM eclipse-temurin:17-jdk
-WORKDIR /app
-
-# Copy jar dari stage build
-COPY --from=build /app/target/github-workflow.jar app.jar
-
-# Jalankan jar
-ENTRYPOINT ["java","-jar","/app/app.jar"]
-
-# Expose port (ubah sesuai application.properties)
-EXPOSE 8080
+# Jalankan Spring Boot
+ENTRYPOINT ["java","-jar","app.jar"]

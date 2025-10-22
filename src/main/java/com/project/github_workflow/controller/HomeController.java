@@ -15,4 +15,9 @@ public class HomeController {
         return "Hello, welcome to Spring Boot!";
     }
 
+    @GetMapping("/role")
+    public String getRole() {
+        return "Hello, welcome to Spring Boot!";
+    }
+
 }
