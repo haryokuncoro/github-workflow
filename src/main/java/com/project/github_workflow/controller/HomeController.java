@@ -15,5 +15,4 @@ public class HomeController {
         return "Hello, welcome to Spring Boot!";
     }
 
-
 }
