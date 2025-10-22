@@ -1,8 +1,4 @@
-FROM eclipse-temurin:17-jdk
-
-WORKDIR /app
-
-COPY target/github-workflow.jar app.jar
-
+FROM openjdk:17
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ADD target/github-workflow.jar github-workflow.jar
+ENTRYPOINT ["java","-jar","/github-workflow.jar"]
