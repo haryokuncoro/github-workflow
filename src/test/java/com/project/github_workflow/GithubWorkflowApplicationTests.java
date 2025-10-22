@@ -1,0 +1,13 @@
+package com.project.github_workflow;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class GithubWorkflowApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
