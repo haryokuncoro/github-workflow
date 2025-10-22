@@ -14,4 +14,6 @@ public class HomeController {
     public String getUser() {
         return "Hello, welcome to Spring Boot!";
     }
+
+
 }
