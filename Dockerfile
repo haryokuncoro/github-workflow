@@ -1,6 +1,6 @@
 # -- STAGE 1: BUILDER (Tahap Pembangunan) --
 # Gunakan image dengan Maven dan JDK untuk proses build
-FROM maven:3.9.5-openjdk-17 AS builder
+FROM maven:3.8.5-openjdk-17 AS builder
 
 # Set working directory untuk tahap build
 WORKDIR /app
