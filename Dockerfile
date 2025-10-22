@@ -1,4 +1,7 @@
-FROM openjdk:17
-EXPOSE 8080
-ADD target/github-workflow.jar github-workflow.jar
-ENTRYPOINT ["java","-jar","/github-workflow.jar"]
+FROM openjdk:17-jdk-slim
+
+WORKDIR /app
+
+COPY target/github-workflow.jar /app/my-api.jar
+
+ENTRYPOINT ["java", "-jar", "my-api.jar"]
