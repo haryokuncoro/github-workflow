@@ -82,6 +82,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+        <finalName>github-workflow</finalName>
 	</build>
 
 </project>
