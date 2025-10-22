@@ -4,6 +4,8 @@ FROM openjdk:17-jdk-slim
 # Set working directory
 WORKDIR /app
 
+RUN mvn clean package -DskipTests
+
 # Copy jar hasil build Maven
 COPY target/github-workflow.jar app.jar
 
