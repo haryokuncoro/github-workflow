@@ -1,7 +1,23 @@
-FROM openjdk:17-jdk-slim
-
+# Stage build
+FROM maven:3.9.3-eclipse-temurin-17 AS build
 WORKDIR /app
 
-COPY target/github-workflow.jar /app/my-api.jar
+# Copy pom dan src
+COPY pom.xml .
+COPY src ./src
 
-ENTRYPOINT ["java", "-jar", "my-api.jar"]
+# Build jar fat/self-contained, skip tests (optional)
+RUN mvn clean package -DskipTests
+
+# Stage runtime
+FROM eclipse-temurin:17-jdk
+WORKDIR /app
+
+# Copy jar dari stage build
+COPY --from=build /app/target/*.jar app.jar
+
+# Jalankan jar
+ENTRYPOINT ["java","-jar","/app.jar"]
+
+# Expose port (ubah sesuai application.properties)
+EXPOSE 8080
