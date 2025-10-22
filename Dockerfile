@@ -23,7 +23,7 @@ RUN mvn clean package -DskipTests
 # ----------------------------------------------------
 # -- STAGE 2: RUNNER (Tahap Eksekusi) --
 # Gunakan image Java JRE yang ramping untuk menjalankan aplikasi
-FROM openjdk:17-jre-slim
+FROM openjdk:17-jdk-slim
 
 # Set working directory
 WORKDIR /app
